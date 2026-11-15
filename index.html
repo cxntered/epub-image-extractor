@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>epub image extractor</title>
+
+    <!-- assets -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.2/jszip.min.js"></script>
+
+    <!-- meta -->
+    <meta name="title" content="epub image extractor" />
+    <meta name="description" content="extract images from epub files" />
+    <meta name="theme-color" content="#121212" />
+
+    <link rel="canonical" href="https://epub.cxntered.dev" />
+
+    <!-- open graph/discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://epub.cxntered.dev" />
+    <meta property="og:title" content="epub image extractor" />
+    <meta property="og:description" content="extract images from epub files" />
+    <meta property="og:site_name" content="epub.cxntered.dev" />
+</head>
+
+<body>
+    <main>
+        <h1>epub image extractor</h1>
+        <p class="subtitle">open an .epub file to extract its images. images are sorted by usage in the text.</p>
+
+        <hr />
+
+        <label id="drop">
+            <input id="file" type="file" accept=".epub">
+            <strong>choose an .epub file or drop one here</strong>
+            <span>extracts all embedded images</span>
+        </label>
+
+        <p id="message" role="status"></p>
+
+        <div id="toolbar">
+            <div id="summary"></div>
+            <button id="download-all">download all as .zip</button>
+        </div>
+
+        <div id="grid"></div>
+    </main>
+
+    <footer>
+        made by <a href="https://cxntered.dev" target="_blank" rel="noopener">cxntered</a> •
+        <a href="https://github.com/cxntered/epub-image-extractor" target="_blank" rel="noopener">source code</a>
+    </footer>
+
+    <div id="toast" role="status" popover="manual"></div>
+
+    <dialog id="lightbox" aria-label="image viewer" tabindex="-1" autofocus>
+        <div class="lightbox-stage">
+            <button class="nav" id="lightbox-previous" aria-label="previous image">&#8249;</button>
+            <img id="lightbox-image" alt="">
+            <button class="nav" id="lightbox-next" aria-label="next image">&#8250;</button>
+        </div>
+
+        <div class="lightbox-top">
+            <div class="lightbox-id">
+                <div id="lightbox-name"></div>
+                <div id="lightbox-info"></div>
+            </div>
+
+            <button id="lightbox-copy">copy</button>
+            <button id="lightbox-download">download</button>
+            <button id="lightbox-close" aria-label="close">&times;</button>
+        </div>
+
+        <div class="lightbox-bottom"><span id="lightbox-count"></span></div>
+    </dialog>
+</body>
+
+</html>
